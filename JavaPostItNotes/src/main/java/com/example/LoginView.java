@@ -50,7 +50,8 @@ public class LoginView extends VerticalLayout {
         User foundUser = userService.findUserByUsername(username);
         if (foundUser != null && foundUser.comparePassword(password)) {
             VaadinSession.getCurrent().setAttribute(User.class, foundUser);
-            CustomMongoConfig.setDynamicDatabaseName(username+"_tasks");
+            String dynamicCollectionName = username;
+            CustomMongoConfig.setDynamicCollectionName(dynamicCollectionName);
             UI.getCurrent().navigate("tasks");
             Notification.show("Logged in successfully");
         } else {
