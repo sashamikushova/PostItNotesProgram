@@ -1,43 +1,43 @@
 package com.example;
+import com.example.Task;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 import org.vaadin.crudui.crud.CrudListener;
 
-import java.util.Collection;
-
+import java.util.List;
 
 @Repository
 public class TaskService implements CrudListener<Task> {
 
-    private final TaskRepository repository;
+    private final MongoTemplate mongoTemplate;
 
-    public TaskService(TaskRepository repository) {
-        this.repository = repository;
+    @Autowired
+    public TaskService(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
     }
 
+
     @Override
-    public Collection<Task> findAll() {
-        return repository.findAll();
+    public List<Task> findAll() {
+        return mongoTemplate.findAll(Task.class, CustomMongoConfig.dynamicCollectionName);
     }
 
     @Override
     public Task add(Task task) {
-        return repository.insert(task);
+        mongoTemplate.save(task, CustomMongoConfig.dynamicCollectionName);
+        return task;
     }
 
     @Override
     public Task update(Task task) {
-        return repository.save(task);
+        mongoTemplate.save(task, CustomMongoConfig.dynamicCollectionName);
+        return task;
     }
 
     @Override
     public void delete(Task task) {
-        repository.delete(task);
+        mongoTemplate.remove(task, CustomMongoConfig.dynamicCollectionName);
     }
-
-
-
-
 }
-
-

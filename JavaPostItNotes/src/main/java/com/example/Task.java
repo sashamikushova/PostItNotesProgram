@@ -6,7 +6,6 @@ import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
 
-
 public class Task {
     @Id
     private ObjectId id;
@@ -17,12 +16,13 @@ public class Task {
     public Task() {
     }
 
-    public Task( ObjectId id, String body, LocalDate date, String time) {
+    public Task(ObjectId id, String body, LocalDate date, String time) {
         this.id = id;
         this.body = body;
         this.date = date;
         this.time = time;
     }
+
     public void setBody(String body) {
 
         this.body = body;
