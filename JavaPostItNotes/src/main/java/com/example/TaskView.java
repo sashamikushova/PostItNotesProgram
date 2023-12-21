@@ -15,6 +15,7 @@ public class TaskView extends VerticalLayout {
         RouterLink routerLink2 = new RouterLink("Notifications", PushView.class);
         add(routerLink2);
         GridCrud<Task> crud = new GridCrud<>(Task.class, service);
+        crud.getGrid().setColumns("body", "date", "time");
         add(crud);
         setSizeFull();
 

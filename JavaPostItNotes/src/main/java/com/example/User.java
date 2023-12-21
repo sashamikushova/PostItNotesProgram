@@ -1,10 +1,14 @@
 package com.example;
 
 
+import nl.martijndwars.webpush.Subscription;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.apache.commons.codec.digest.DigestUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class User {
@@ -13,6 +17,8 @@ public class User {
     private String username;
     private String password;
     private String passwordHash;
+    private Map<String, Subscription> endpointToSubscription = new HashMap<>();
+
     public User() {
 
     }
@@ -64,5 +70,19 @@ public class User {
 
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
+    }
+
+    public Map<String, Subscription> getEndpointToSubscription() {
+        return endpointToSubscription;
+    }
+
+    public void setEndpointToSubscription(HashMap<String, Subscription> endpointToSubscription) {
+        this.endpointToSubscription = endpointToSubscription;
+    }
+    public void addSubscriptionToMap(Subscription subscription){
+        this.endpointToSubscription.put(subscription.endpoint, subscription);
+    }
+    public void removeSubscriptionFromMap(Subscription subscription){
+        this.endpointToSubscription.remove(subscription.endpoint);
     }
 }

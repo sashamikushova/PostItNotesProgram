@@ -21,6 +21,8 @@ public class CustomMongoConfig extends AbstractMongoClientConfiguration {
 		dynamicCollectionName = collectionName;
 	}
 
+	public static String getDynamicCollectionName() {return dynamicCollectionName;}
+
 	@Bean
 	@Override
 	public MongoClient mongoClient() {

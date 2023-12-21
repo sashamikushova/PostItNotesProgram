@@ -21,6 +21,7 @@ public class Task {
         this.body = body;
         this.date = date;
         this.time = time;
+
     }
 
     public void setBody(String body) {
