@@ -20,10 +20,10 @@ public class LoginView extends VerticalLayout {
     private final UserService userService;
     private H3 title;
 
-    private TextField username;
+    public TextField username;
 
-    private PasswordField password;
-    private Span errorMessageField;
+    public PasswordField password;
+    public Span errorMessageField;
     private Button loginButton;
 
     public LoginView(UserService userService) {
@@ -42,11 +42,12 @@ public class LoginView extends VerticalLayout {
 
         add(title, username, password,
                 errorMessageField,
-                loginButton);
-        setHorizontalComponentAlignment(Alignment.CENTER);
-        add(routerLink);
+                loginButton, routerLink);
+        setHorizontalComponentAlignment(Alignment.CENTER, title, username, password, errorMessageField, loginButton, routerLink);
+
+
     }
-    private void authenticate(String username, String password) {
+    public void authenticate(String username, String password) {
         User foundUser = userService.findUserByUsername(username);
         if (foundUser != null && foundUser.comparePassword(password)) {
             VaadinSession.getCurrent().setAttribute(User.class, foundUser);
@@ -59,4 +60,35 @@ public class LoginView extends VerticalLayout {
         }
     }
 
+    public UserService getUserService() {
+        return userService;
+    }
+
+    public void setUsername(TextField username) {
+        this.username = username;
+    }
+
+    public void setPassword(PasswordField password) {
+        this.password = password;
+    }
+
+    public H3 getTitle() {
+        return title;
+    }
+
+    public TextField getUsername() {
+        return username;
+    }
+
+    public PasswordField getPassword() {
+        return password;
+    }
+
+    public Span getErrorMessageField() {
+        return errorMessageField;
+    }
+
+    public Button getLoginButton() {
+        return loginButton;
+    }
 }

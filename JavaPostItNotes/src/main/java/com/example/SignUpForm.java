@@ -17,7 +17,6 @@ public class SignUpForm extends FormLayout {
     private H3 title;
 
     private TextField username;
-
     private PasswordField password;
     private PasswordField passwordConfirm;
     private Span errorMessageField;
@@ -58,7 +57,14 @@ public class SignUpForm extends FormLayout {
     private void signup(String username, String password, String confirmPassword) {
         if (!password.equals(confirmPassword)) {
             errorMessageField.setText("Make sure passwords are identical");
-        } else {
+        }
+        else if (username.contains(".") || username.contains("$")) {
+            errorMessageField.setText("Username cannot contain '.' or '$'");
+        }
+        else if(username.equals("user")){
+            errorMessageField.setText("Please try another username");
+        }
+        else {
             User user = new User(username, password);
             if(userService.findUserByUsername(username) == null){
                 User addedUser = userService.add(user);
@@ -73,6 +79,14 @@ public class SignUpForm extends FormLayout {
             }
         }
 
+    }
+
+    public TextField getUsernameField() {
+        return username;
+    }
+
+    public void setUsernameField(TextField username) {
+        this.username = username;
     }
 
     public PasswordField getPasswordField() { return password; }
