@@ -85,6 +85,12 @@
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.69</version>
         </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-testbench-unit-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+
 	</dependencies>
 
     <build>
