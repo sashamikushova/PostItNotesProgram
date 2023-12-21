@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/PostItNotesProgram.iml" filepath="$PROJECT_DIR$/.idea/PostItNotesProgram.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaPostItNotes/mongodb-vaadin-demo.iml" filepath="$PROJECT_DIR$/JavaPostItNotes/mongodb-vaadin-demo.iml" />
     </modules>
   </component>
 </project>
