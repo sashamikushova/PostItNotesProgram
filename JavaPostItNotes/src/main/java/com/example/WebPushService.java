@@ -40,7 +40,7 @@ public class WebPushService {
 
     //private final ExecutorService executorService = Executors.newSingleThreadExecutor();
     private User currentUser;
-    private PushService pushService;
+    public PushService pushService;
     private TaskService taskService;
     private final UserService userService;
 
@@ -156,5 +156,9 @@ public class WebPushService {
         } catch (Exception e) {
             System.out.println("Exception occurred: " + e.getMessage());
         }
+    }
+
+    public PushService getPushService() {
+        return pushService;
     }
 }
