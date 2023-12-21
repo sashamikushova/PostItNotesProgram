@@ -1,7 +1,7 @@
 Service to track upcoming tasks with notifications.
 
 The program was written using Spring Boot for making project, Vaadin for UI design and MongoDB for storing information about users and their tasks. 
-It includes 4 web pages: for signing uop, logging in, saving tasks and managing push notifications. If user is subscribed they will also receive task push notifications 2 minutes before the actual time of a task.
+It includes 4 web pages: for signing uop, logging in, saving tasks and managing push notifications. If user is subscribed they will receive task push notifications 2 minutes before the actual time of a task. The notifications are visible even if the window is closed.
 
 To start the program run the file JavaPostItNotes.
 Make sure to also make an application.properties file in the resourses package. There, values for fields VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY (generate them with npx web-push generate-vapid-keys), VAPID_SUBJECT(your e-mail) should be provided. Please also add a link in spring.data.mongodb.uri field in application.properties file to a running MongoDB database (If you use local, make sure it is running).
