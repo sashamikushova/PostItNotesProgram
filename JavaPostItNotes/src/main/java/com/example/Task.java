@@ -5,6 +5,8 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 
 public class Task {
     @Id
@@ -35,8 +37,12 @@ public class Task {
     }
 
     public void setTime(String time) {
-
-        this.time = time;
+        try {
+            LocalTime.parse(time);
+            this.time = time;
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("Invalid time format. Please provide time in the format HH:mm");
+        }
 
     }
 
